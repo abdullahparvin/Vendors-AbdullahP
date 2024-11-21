@@ -29,7 +29,13 @@ class Vending {
      * @param amt how much money to add
      * */
     void addMoney (double amt) {
-        this.balance = this.balance + amt;
+        if (amt > 0) {
+            this.balance = this.balance + amt;
+        }
+
+        if(this.balance < 0) {
+            balance = Integer.MAX_VALUE;
+        }
     }
 
     /** attempt to purchase named item.  Message returned if
