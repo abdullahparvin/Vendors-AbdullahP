@@ -6,11 +6,14 @@ class Item {
 
     String name;
 
+    int purchaseCount;
+
     Item(double price, int numPieces, boolean restockable, String name) {
         this.price = price;
         this.stock = numPieces;
         this.autoRestock = restockable;
         this.name = name;
+        this.purchaseCount = 0;
     }
 
     void restock(int amount) {
@@ -25,6 +28,7 @@ class Item {
 
     void purchase(int amount) {
         this.stock = this.stock - amount;
+        purchaseCount += amount;
         if(this.autoRestock) {
             checkStock();
         }
@@ -54,5 +58,9 @@ class Item {
 
     String DetailsToString() {
         return name + ":" + price + "$ Quantity: " + stock;
+    }
+
+    public int getPurchaseCount() {
+        return purchaseCount;
     }
 }

@@ -224,6 +224,15 @@ public class VendorTest {
         Assertions.assertEquals(null, vendor.getStock(item));
     }
 
+    @Test
+    void getGumDescription() {
+        String item = "Gum";
+        Item product = vendor.getStock(item);
+        Assertions.assertEquals("Gum:0.5$ Quantity: 10", product.DetailsToString());
+    }
+
+
+
 
 
 

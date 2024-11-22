@@ -91,6 +91,25 @@ class Vending {
     void removeItem(String name) {
         Stock.remove(name);
     }
+
+    String getBestSeller() {
+        Item mostPopular = null;
+        for (Item item : Stock.values()) {
+            if (mostPopular == null || item.getPurchaseCount() > mostPopular.getPurchaseCount()) {
+                mostPopular = item;
+            }
+        }
+        return mostPopular != null ? mostPopular.name : "No purchases yet.";
+    }
+
+    String getPurchaseSummary() {
+        StringBuilder summary = new StringBuilder("Purchase Summary:\n");
+        for (String key : Stock.keySet()) {
+            Item item = Stock.get(key);
+            summary.append(item.name).append(": Purchased ").append(item.getPurchaseCount()).append("\n");
+        }
+        return summary.toString();
+    }
 }
 
 class Examples {
