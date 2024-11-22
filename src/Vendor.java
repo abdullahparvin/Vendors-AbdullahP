@@ -51,8 +51,14 @@ class Vending {
                 if (item.getStock() >= amount){
                     item.purchase(amount);
                     System.out.println("You bought " + amount + " " + name);
+                    this.balance = this.balance - (item.price * amount);
                 }
-                this.balance = this.balance - (item.price * amount);
+                else{
+                    int stock = item.getStock();
+                    item.purchase(item.getStock());
+                    System.out.println("You bought " + stock + " " + name);
+                    this.balance = this.balance - (item.price * stock);
+                }
                 if (this.balance > 0) {
                     System.out.println("Here's your change: " + this.balance);
                     resetBalance();

@@ -91,6 +91,30 @@ public class VendorTest {
         Assertions.assertEquals(5, amount);
     }
 
+    @Test
+    void buyEntireStockCandy() {
+        String item = "Candy";
+        vendor.addMoney(12.50);
+        Assertions.assertEquals(12.50, vendor.getBalance());
+        vendor.purchase(item);
+        Item product = vendor.getStock(item);
+        int amount = product.getStock();
+        Assertions.assertEquals(0, vendor.getBalance());
+        Assertions.assertEquals(0, amount);
+    }
+
+    @Test
+    void buyEntireStockCandyTooMuchMoney() {
+        String item = "Candy";
+        vendor.addMoney(20);
+        Assertions.assertEquals(20, vendor.getBalance());
+        vendor.purchase(item);
+        Item product = vendor.getStock(item);
+        int amount = product.getStock();
+        Assertions.assertEquals(0, vendor.getBalance());
+        Assertions.assertEquals(0, amount);
+    }
+
 
 
 }
