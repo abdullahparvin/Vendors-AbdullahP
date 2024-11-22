@@ -115,6 +115,46 @@ public class VendorTest {
         Assertions.assertEquals(0, amount);
     }
 
+    @Test
+    void restockCandy5() {
+        String item = "Candy";
+        Item product = vendor.getStock(item);
+        product.restock(5);
+        Assertions.assertEquals(15, product.getStock());
+    }
+
+    @Test
+    void restockCandy10() {
+        String item = "Candy";
+        Item product = vendor.getStock(item);
+        product.restock(10);
+        Assertions.assertEquals(20, product.getStock());
+    }
+
+    @Test
+    void restockCandyNegative20() {
+        String item = "Candy";
+        Item product = vendor.getStock(item);
+        product.restock(-20);
+        Assertions.assertEquals(10, product.getStock());
+    }
+
+    @Test
+    void restockCandyTooMuch() {
+        String item = "Candy";
+        Item product = vendor.getStock(item);
+        product.restock(Integer.MAX_VALUE);
+        Assertions.assertEquals(Integer.MAX_VALUE, product.getStock());
+    }
+
+    @Test
+    void restockCandyTooLittle() {
+        String item = "Candy";
+        Item product = vendor.getStock(item);
+        product.restock(Integer.MIN_VALUE);
+        Assertions.assertEquals(10, product.getStock());
+    }
+
 
 
 }

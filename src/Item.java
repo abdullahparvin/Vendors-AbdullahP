@@ -8,7 +8,13 @@ class Item {
     }
 
     void restock(int amount) {
-        this.stock = this.stock + amount;
+        if (amount > 0) {
+            this.stock = this.stock + amount;
+        }
+
+        if(this.stock < 0) {
+            stock = Integer.MAX_VALUE;
+        }
     }
 
     void purchase(int amount) {
