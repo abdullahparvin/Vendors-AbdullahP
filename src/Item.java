@@ -4,10 +4,13 @@ class Item {
 
     boolean autoRestock;
 
-    Item(double price, int numPieces, boolean restockable) {
+    String name;
+
+    Item(double price, int numPieces, boolean restockable, String name) {
         this.price = price;
         this.stock = numPieces;
         this.autoRestock = restockable;
+        this.name = name;
     }
 
     void restock(int amount) {
@@ -31,9 +34,21 @@ class Item {
         return stock;
     }
 
-    void checkStock (){
+    void checkStock () {
         if (this.stock == 0) {
             restock(10);
         }
+    }
+
+    public void setAutoRestock(boolean autoRestock) {
+        this.autoRestock = autoRestock;
+    }
+
+    String getName () {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

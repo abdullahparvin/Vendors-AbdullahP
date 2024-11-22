@@ -10,8 +10,8 @@ class Vending {
     private double balance;
 
     Vending(int numCandy, int numGum) {
-        Stock.put("Candy", new Item(1.25, numCandy, false));
-        Stock.put("Gum", new Item(.5, numGum, true));
+        Stock.put("Candy", new Item(1.25, numCandy, false, "Candy"));
+        Stock.put("Gum", new Item(.5, numGum, true, "Gum"));
         this.balance = 0;
     }
 

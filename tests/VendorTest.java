@@ -167,6 +167,31 @@ public class VendorTest {
         Assertions.assertEquals(10, amount);
     }
 
+    @Test
+    void ChangeGumName() {
+        String item = "Gum";
+        Item product = vendor.getStock(item);
+        product.setName("Trident Gum");
+        Assertions.assertEquals("Trident Gum", product.getName());
+    }
+
+    @Test
+    void ChangeCandyName() {
+        String item = "Candy";
+        Item product = vendor.getStock(item);
+        product.setName("Snickers");
+        Assertions.assertEquals("Snickers", product.getName());
+    }
+
+    @Test
+    void NoChangeCandyName() {
+        String item = "Candy";
+        Item product = vendor.getStock(item);
+        Assertions.assertEquals("Candy", product.getName());
+    }
+
+
+
 
 
 
