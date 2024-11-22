@@ -190,6 +190,33 @@ public class VendorTest {
         Assertions.assertEquals("Candy", product.getName());
     }
 
+    @Test
+    void showAllVendors() {
+        Vending vendor1 = new Vending(5, 0);
+        Vending vendor2 = new Vending(10, 2);
+        Vending vendor3 = new Vending(1, 3);
+        Vending vendor4 = new Vending(2, 2);
+        Vending vendor5 = new Vending(8, 9);
+
+        VendorMarket market = new VendorMarket(vendor1);
+        market.addVendor(vendor2);
+        market.addVendor(vendor3);
+        market.addVendor(vendor4);
+        market.addVendor(vendor5);
+
+        StringBuilder expectedInventory = new StringBuilder();
+        expectedInventory.append(vendor1.printInventory()).append("\n");
+        expectedInventory.append(vendor2.printInventory()).append("\n");
+        expectedInventory.append(vendor3.printInventory()).append("\n");
+        expectedInventory.append(vendor4.printInventory()).append("\n");
+        expectedInventory.append(vendor5.printInventory()).append("\n");
+
+        String expected = expectedInventory.toString().trim();
+        String actual = market.printMarket().trim();
+
+        assertEquals(expected, actual);
+    }
+
 
 
 

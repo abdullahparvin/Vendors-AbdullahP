@@ -6,7 +6,7 @@ import java.util.HashMap;
  * well as the current balance of money that has been deposited into the machine.
  */
 class Vending {
-    private static HashMap<String, Item> Stock = new HashMap<String,Item>();
+    private static HashMap<String, Item> Stock = new HashMap<String, Item>();
     private double balance;
 
     Vending(int numCandy, int numGum) {
@@ -15,45 +15,51 @@ class Vending {
         this.balance = 0;
     }
 
-    /** resets the Balance to 0 */
-    void resetBalance () {
+    /**
+     * resets the Balance to 0
+     */
+    void resetBalance() {
         this.balance = 0;
     }
 
-    /** returns the current balance */
-    double getBalance () {
+    /**
+     * returns the current balance
+     */
+    double getBalance() {
         return this.balance;
     }
 
-    /** adds money to the machine's balance
+    /**
+     * adds money to the machine's balance
+     *
      * @param amt how much money to add
-     * */
-    void addMoney (double amt) {
+     */
+    void addMoney(double amt) {
         if (amt > 0) {
             this.balance = this.balance + amt;
         }
 
-        if(this.balance < 0) {
+        if (this.balance < 0) {
             balance = Integer.MAX_VALUE;
         }
     }
 
-    /** attempt to purchase named item.  Message returned if
+    /**
+     * attempt to purchase named item.  Message returned if
      * the balance isn't sufficient to cover the item cost.
      *
      * @param name The name of the item to purchase ("Candy" or "Gum")
      */
-    void purchase (String name) {
+    void purchase(String name) {
         if (Stock.containsKey(name)) {
             Item item = Stock.get(name);
             if (balance >= item.price) {
                 int amount = (int) (balance / item.price);
-                if (item.getStock() >= amount){
+                if (item.getStock() >= amount) {
                     item.purchase(amount);
                     System.out.println("You bought " + amount + " " + name);
                     this.balance = this.balance - (item.price * amount);
-                }
-                else{
+                } else {
                     int stock = item.getStock();
                     item.purchase(item.getStock());
                     System.out.println("You bought " + stock + " " + name);
@@ -63,17 +69,24 @@ class Vending {
                     System.out.println("Here's your change: " + this.balance);
                     resetBalance();
                 }
-            }
-            else
+            } else
                 System.out.println("Gimme more money");
-        }
-        else System.out.println("Sorry, don't know that item");
+        } else System.out.println("Sorry, don't know that item");
     }
 
-    Item getStock (String item) {
+    Item getStock(String item) {
         return Stock.get(item);
     }
 
+    String printInventory() {
+        StringBuilder inventory = new StringBuilder();
+        for (String key : Stock.keySet()) {
+            Item product = Stock.get(key);
+            inventory.append(product.DetailsToString());
+        }
+        return inventory.toString();
+
+    }
 }
 
 class Examples {
