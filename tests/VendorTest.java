@@ -286,6 +286,27 @@ public class VendorTest {
         Assertions.assertEquals(10, amount);
     }
 
+    @Test
+    void getBestSellerOnePurchase() {
+        String item = "Candy";
+        vendor.addMoney(1.25);
+        vendor.purchase(item);
+        Assertions.assertEquals("Candy", vendor.getBestSeller());
+    }
+
+    @Test
+    void getBestSellerMultiplePurchase() {
+        String item = "Candy";
+        String item2 = "Gum";
+        vendor.addMoney(1.25);
+        vendor.purchase(item);
+        vendor.addMoney(2);
+        vendor.purchase(item2);
+        Assertions.assertEquals("Gum", vendor.getBestSeller());
+    }
+
+
+
 
 
 
