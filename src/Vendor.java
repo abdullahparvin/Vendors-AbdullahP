@@ -43,17 +43,29 @@ class Vending {
      *
      * @param name The name of the item to purchase ("Candy" or "Gum")
      */
-    void select (String name) {
+    void purchase (String name) {
         if (Stock.containsKey(name)) {
             Item item = Stock.get(name);
             if (balance >= item.price) {
-                item.purchase(1);
-                this.balance = this.balance - item.price;
+                int amount = (int) (balance / item.price);
+                if (item.getStock() >= amount){
+                    item.purchase(amount);
+                    System.out.println("You bought " + amount + " " + name);
+                }
+                this.balance = this.balance - (item.price * amount);
+                if (this.balance > 0) {
+                    System.out.println("Here's your change: " + this.balance);
+                    resetBalance();
+                }
             }
             else
                 System.out.println("Gimme more money");
         }
         else System.out.println("Sorry, don't know that item");
+    }
+
+    Item getStock (String item) {
+        return Stock.get(item);
     }
 
 }

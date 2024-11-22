@@ -37,6 +37,60 @@ public class VendorTest {
         Assertions.assertEquals(0, vendor.getBalance());
     }
 
+    @Test
+    void buyOneCandyNoMoney() {
+        String item = "Candy";
+        vendor.purchase(item);
+        Item product = vendor.getStock(item);
+        int amount = product.getStock();
+        Assertions.assertEquals(10, amount);
+    }
+
+    @Test
+    void buyOneGumNoMoney() {
+        String item = "Gum";
+        vendor.purchase(item);
+        Item product = vendor.getStock(item);
+        int amount = product.getStock();
+        Assertions.assertEquals(10, amount);
+    }
+
+    @Test
+    void buyOneGum() {
+        String item = "Gum";
+        vendor.addMoney(0.5);
+        Assertions.assertEquals(0.5, vendor.getBalance());
+        vendor.purchase(item);
+        Item product = vendor.getStock(item);
+        int amount = product.getStock();
+        Assertions.assertEquals(0, vendor.getBalance());
+        Assertions.assertEquals(9, amount);
+    }
+
+    @Test
+    void buyGumTooMuchMoney() {
+        String item = "Gum";
+        vendor.addMoney(2);
+        Assertions.assertEquals(2, vendor.getBalance());
+        vendor.purchase(item);
+        Item product = vendor.getStock(item);
+        int amount = product.getStock();
+        Assertions.assertEquals(0, vendor.getBalance());
+        Assertions.assertEquals(6, amount);
+    }
+
+    @Test
+    void buyGumTooMuchMoneyWithChange() {
+        String item = "Gum";
+        vendor.addMoney(2.75);
+        Assertions.assertEquals(2.75, vendor.getBalance());
+        vendor.purchase(item);
+        Item product = vendor.getStock(item);
+        int amount = product.getStock();
+        Assertions.assertEquals(0, vendor.getBalance());
+        Assertions.assertEquals(5, amount);
+    }
+
 
 
 }
