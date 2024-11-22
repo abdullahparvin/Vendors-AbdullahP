@@ -305,6 +305,26 @@ public class VendorTest {
         Assertions.assertEquals("Gum", vendor.getBestSeller());
     }
 
+    @Test
+    void getNumberPurchases1() {
+        String item = "Candy";
+        Item product = vendor.getStock(item);
+        vendor.addMoney(1.25);
+        vendor.purchase(item);
+        Assertions.assertEquals(1, product.getPurchaseCount());
+    }
+
+    @Test
+    void getNumberPurchasesMultipe() {
+        String item = "Candy";
+        Item product = vendor.getStock(item);
+        vendor.addMoney(5);
+        vendor.purchase(item);
+        Assertions.assertEquals(4, product.getPurchaseCount());
+    }
+
+
+
 
 
 

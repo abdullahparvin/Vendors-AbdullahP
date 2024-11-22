@@ -1,3 +1,8 @@
+/**
+ * Class for a Item being sold.  Contains information on the product: price, stock amount,
+ * restock status, name, and the amount of time it has been purchased.
+ *
+ */
 class Item {
     double price;
     int stock;

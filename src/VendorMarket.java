@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+
+/**
+ * Class for a Vending Market.  Contains a list of the available vendors in the market
+ */
 public class VendorMarket {
 
     ArrayList<Vending> vendors = new ArrayList<>();
