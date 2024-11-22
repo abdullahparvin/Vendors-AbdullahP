@@ -74,10 +74,20 @@ class Vending {
         } else System.out.println("Sorry, don't know that item");
     }
 
+    /**
+     * return item from stock
+     *
+     * @param item the item being retrived
+     */
     Item getStock(String item) {
         return Stock.get(item);
     }
 
+    /**
+     * prints inventory information
+     *
+     *
+     */
     String printInventory() {
         StringBuilder inventory = new StringBuilder();
         for (String key : Stock.keySet()) {
@@ -88,10 +98,21 @@ class Vending {
 
     }
 
+
+    /**
+     *removes item from stock
+     *
+     * @param name product to be removed
+     */
     void removeItem(String name) {
         Stock.remove(name);
     }
 
+    /**
+     * gets information on the best selling item
+     *
+     *
+     */
     String getBestSeller() {
         Item mostPopular = null;
         for (Item item : Stock.values()) {
@@ -102,6 +123,11 @@ class Vending {
         return mostPopular != null ? mostPopular.name : "No purchases yet.";
     }
 
+    /**
+     * gives a summary of customer purchases
+     *
+     *
+     */
     String getPurchaseSummary() {
         StringBuilder summary = new StringBuilder("Purchase Summary:\n");
         for (String key : Stock.keySet()) {

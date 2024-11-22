@@ -7,10 +7,20 @@ public class VendorMarket {
         vendors.add(vendor);
     }
 
+    /**
+     * adds vendor to the market
+     *
+     * @param vendor vendor to be added
+     */
     void addVendor(Vending vendor) {
         vendors.add(vendor);
     }
 
+    /**
+     * displays inventory of all vendors in market
+     *
+     *
+     */
     String printMarket() {
         StringBuilder marketInventory = new StringBuilder();
         for (Vending vendor: vendors){
