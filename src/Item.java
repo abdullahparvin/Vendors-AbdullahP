@@ -2,9 +2,12 @@ class Item {
     double price;
     int stock;
 
-    Item(double price, int numPieces) {
+    boolean autoRestock;
+
+    Item(double price, int numPieces, boolean restockable) {
         this.price = price;
         this.stock = numPieces;
+        this.autoRestock = restockable;
     }
 
     void restock(int amount) {
@@ -19,9 +22,18 @@ class Item {
 
     void purchase(int amount) {
         this.stock = this.stock - amount;
+        if(this.autoRestock) {
+            checkStock();
+        }
     }
 
     int getStock () {
         return stock;
+    }
+
+    void checkStock (){
+        if (this.stock == 0) {
+            restock(10);
+        }
     }
 }

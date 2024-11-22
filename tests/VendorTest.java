@@ -155,6 +155,23 @@ public class VendorTest {
         Assertions.assertEquals(10, product.getStock());
     }
 
+    @Test
+    void autoRestockGumWhenEmpty() {
+        String item = "Gum";
+        vendor.addMoney(5);
+        Assertions.assertEquals(5, vendor.getBalance());
+        vendor.purchase(item);
+        Item product = vendor.getStock(item);
+        int amount = product.getStock();
+        Assertions.assertEquals(0, vendor.getBalance());
+        Assertions.assertEquals(10, amount);
+    }
+
+
+
+
+
+
 
 
 }
