@@ -217,6 +217,13 @@ public class VendorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void removeGum() {
+        String item = "Gum";
+        vendor.removeItem(item);
+        Assertions.assertEquals(null, vendor.getStock(item));
+    }
+
 
 
 
